@@ -9,21 +9,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class prestito {
+public class sconto {
 	
 	@NonNull
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private String cacca;
+	private String sconto;
 	
 	@ManyToOne
 	private pizzeriaModel pizzeriaModel;
-	
-	
-	
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -32,21 +29,25 @@ public class prestito {
 		this.id = id;
 	}
 
-	public String getCacca() {
-		return cacca;
+	public String getSconto() {
+		return sconto;
 	}
 
-	public void setCacca(String cacca) {
-		this.cacca = cacca;
+	public void setSconto(String sconto) {
+		this.sconto = sconto;
 	}
 
-	public pizzeriaModel getPizza() {
+	public pizzeriaModel getPizzeriaModel() {
 		return pizzeriaModel;
 	}
 
-	public void setPizza(pizzeriaModel pizza) {
-		this.pizzeriaModel = pizza;
+	public void setPizzeriaModel(pizzeriaModel pizzeriaModel) {
+		this.pizzeriaModel = pizzeriaModel;
 	}
+	
+	
+	
+	
 
 	
 	

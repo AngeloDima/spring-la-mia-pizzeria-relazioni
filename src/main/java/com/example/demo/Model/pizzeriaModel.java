@@ -25,21 +25,10 @@ import jakarta.validation.constraints.Size;
 public class pizzeriaModel {
 
 	
-	
-	
-	
-	
-	
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
 	
-    
-    
-    
-    
-    
-
 
 	@NonNull
     @NotEmpty(message="Devi inserire un nome")
@@ -71,15 +60,15 @@ public class pizzeriaModel {
     
     
     @OneToMany(mappedBy = "pizzeriaModel")
-    private List<prestito> prest;
+    private List<sconto> Sconto;
     
     
-    public List<prestito> getPrest() {
-		return prest;
+    public List<sconto> getPrest() {
+		return Sconto;
 	}
 
-	public void setPrest(List<prestito> prest) {
-		this.prest = prest;
+	public void setPrest(List<sconto> prest) {
+		this.Sconto = prest;
 	}
 
 	public String getNome() {
