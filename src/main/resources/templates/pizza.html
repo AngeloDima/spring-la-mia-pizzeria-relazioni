@@ -5,11 +5,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
 	<div>
 		<h2 th:text="${elencoPizze.nome}"></h2>
 		<h2 th:text="${elencoPizze.descrizione}"></h2>
 		<h2 th:text="${elencoPizze.prezzo}"></h2>
 	</div>
+	
+	
+	<a th:href="@{|/sconto/create?elencoPizze=${elencoPizze.id}|}">Crea sconto</a>
 	
 	
 	<h1>-----------------------</h1>
