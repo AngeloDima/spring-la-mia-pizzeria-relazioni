@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.Model.pizzeriaModel;
+import com.example.demo.Model.pizzeria;
 import com.example.demo.Repository.pizzeriaRepository;
 
 import jakarta.validation.Valid;
@@ -28,7 +28,7 @@ public class pizzeriaController {
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String keyword,
             @RequestParam(name = "prezzo", required = false) Double prezzo, Model model) {
-        List<pizzeriaModel> elencoPizze;
+        List<pizzeria> elencoPizze;
 
         if (keyword != null && !keyword.isEmpty()) {
             elencoPizze = repository.findByNomeLike("%" + keyword + "%");
@@ -48,13 +48,13 @@ public class pizzeriaController {
     
     @GetMapping("/create")
     public String create(Model model) {
-        pizzeriaModel pizzeria = new pizzeriaModel();
+        pizzeria pizzeria = new pizzeria();
         model.addAttribute("pizzeria", pizzeria);
         return "create";
     }
 
     @PostMapping("/create")
-    public String storeCreate(@Valid @ModelAttribute("pizzeria") pizzeriaModel formPizzeria,BindingResult bindingResult, Model model) {
+    public String storeCreate(@Valid @ModelAttribute("pizzeria") pizzeria formPizzeria,BindingResult bindingResult, Model model) {
         
         	if (bindingResult.hasErrors()) {
         		return "create";
@@ -68,8 +68,8 @@ public class pizzeriaController {
     
     @GetMapping("pizza/{id}")
     public String detail(@PathVariable("id") Integer id, Model model) {
-    	pizzeriaModel elencoPizze = repository.getReferenceById(id);
-    	model.addAttribute("pizza", elencoPizze);
+    	pizzeria elencoPizze = repository.getReferenceById(id);  
+    	model.addAttribute("elencoPizze", elencoPizze);  	
     	return "pizza";
     	
     }
@@ -81,7 +81,7 @@ public class pizzeriaController {
     @GetMapping("/edit/{id}") 
     	public String storeEdit(@PathVariable("id") Integer id, Model model) {
     		
-    		pizzeriaModel pizzeria;
+    		pizzeria pizzeria;
     		pizzeria=repository.getReferenceById(id);
     		model.addAttribute("pizzeria", pizzeria);
     	
@@ -91,7 +91,7 @@ public class pizzeriaController {
     
     @PostMapping("/edit/{id}")
     public String update(
-    		@Valid @ModelAttribute ("pizzeria") pizzeriaModel formPizzeria,BindingResult bindingResult, Model model) {
+    		@Valid @ModelAttribute ("pizzeria") pizzeria formPizzeria,BindingResult bindingResult, Model model) {
     	
     	if(bindingResult.hasErrors()) {
     		return "edit";
@@ -112,7 +112,6 @@ public class pizzeriaController {
 }
     
     
-
 
 
 

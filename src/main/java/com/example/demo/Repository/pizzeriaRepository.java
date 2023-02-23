@@ -6,12 +6,12 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.Model.pizzeriaModel;
+import com.example.demo.Model.pizzeria;
 
-public interface pizzeriaRepository extends JpaRepository<pizzeriaModel, Integer>{
+public interface pizzeriaRepository extends JpaRepository<pizzeria, Integer>{
 
-	 public List<pizzeriaModel> findByNomeLike(String keyword);
-	 public List<pizzeriaModel> findByPrezzo(Double prezzo);
+	 public List<pizzeria> findByNomeLike(String keyword);
+	 public List<pizzeria> findByPrezzo(Double prezzo);
 	
 }
 

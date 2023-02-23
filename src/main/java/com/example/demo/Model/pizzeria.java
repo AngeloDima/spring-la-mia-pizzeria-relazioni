@@ -21,89 +21,78 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table (name ="pizze")
-public class pizzeriaModel {
+@Table(name = "pizze")
+public class pizzeria {
 
-	
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id ;
-	
+    private Integer id;
 
-	@NonNull
-    @NotEmpty(message="Devi inserire un nome")
+    @NonNull
+    @NotEmpty(message = "Devi inserire un nome")
     @Column(nullable = false)
     @Size(min = 4, max = 20, message = "il nome deve contenere minimo 4 caratteri")
     private String nome;
-	
-    
+
     @NonNull
-    @NotEmpty(message="Devi inserire una descrizione")
+    @NotEmpty(message = "Devi inserire una descrizione")
     @Column(nullable = false, columnDefinition = "CHAR(10)")
     @Size(min = 5, max = 80, message = "la descrizione deve contenere minimo 5 caratteri")
     private String descrizione;
-	
-    
-    
-    
-    
-    @NotNull(message="Devi inserire un prezzo")
+
+    @NotNull(message = "Devi inserire un prezzo")
     @DecimalMin(value = "0.01", inclusive = true, message = "Il prezzo non può essere inferiore a 0.01")
     @DecimalMax(value = "999.99", inclusive = true, message = "Il prezzo non può essere inferiore a 999.99")
-
-
     private Double prezzo;
-    
-	
-    
-    
-    
-    
-    @OneToMany(mappedBy = "pizzeriaModel")
-    private List<sconto> Sconto;
-    
-    
-    public List<sconto> getPrest() {
-		return Sconto;
+
+    @OneToMany(mappedBy = "elencoPizze")
+    private List<Sconto> sconto;
+    //------------------------------------------------------------
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setPrest(List<sconto> prest) {
-		this.Sconto = prest;
-	}
-
-	public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescrizione() {
-        return descrizione;
-    }
-
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
-    }
-
-    public Double getPrezzo() {
-        return prezzo;
-    }
-
-    public void setPrezzo(Double prezzo) {
-        this.prezzo = prezzo;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-    
-    public void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+	public Double getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(Double prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public List<Sconto> getSconto() {
+		return sconto;
+	}
+
+	public void setSconto(List<Sconto> sconto) {
+		this.sconto = sconto;
+	}
+
+    
+
 }
+
 
 
 
