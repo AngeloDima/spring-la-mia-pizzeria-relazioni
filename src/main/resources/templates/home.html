@@ -28,8 +28,8 @@
 	
 		<div class="down">
 		    <h2 id="elen">Elenco pizze</h2>
-		    <ul id="contentList" th:if="${elencoPizze}">
-		        <li id="spaz" th:each="pizza : ${elencoPizze}">
+		    <ul id="contentList" th:if="${Pizza}">
+		        <li id="spaz" th:each="pizza : ${Pizza}">
 		            <a th:href="@{/pizza/{id}(id=${pizza.id})}" th:text="${pizza.nome}"></a> - <span th:text="${pizza.descrizione}"></span> - <span th:text="${pizza.prezzo}"></span> $
 		            <form th:action="@{/delete/{id}(id=${pizza.id})}" method="post">
 		                <button type="submit">Click to Delete</button>
@@ -42,7 +42,7 @@
 		</div>
 	
 	
-	<h3 id="Err" th:unless="${not #lists.isEmpty(elencoPizze)}">Non ci sono pizze</h3>
+	<h3 id="Err" th:unless="${not #lists.isEmpty(Pizza)}">Non ci sono pizze</h3>
 </div>
 	
 	
