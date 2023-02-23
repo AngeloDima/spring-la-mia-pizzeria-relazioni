@@ -1,5 +1,7 @@
 package com.example.demo.Model;
 
+import java.sql.Date;
+
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +20,8 @@ public class Sconto {
     
     private String Offerta;
    
-    
+    private Date inizio;
+    private Date fine;
 
 	//------------------------------------------------------------
     @ManyToOne
@@ -26,31 +29,47 @@ public class Sconto {
     private pizzeria elencoPizze;
     //------------------------------------------------------------
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getOfferta() {
-        return Offerta;
-    }
+	public String getOfferta() {
+		return Offerta;
+	}
 
-    public void setOfferta(String offerta) {
-        Offerta = offerta;
-    }
+	public void setOfferta(String offerta) {
+		Offerta = offerta;
+	}
+
+	public Date getInizio() {
+		return inizio;
+	}
+
+	public void setInizio(Date inizio) {
+		this.inizio = inizio;
+	}
+
+	public Date getFine() {
+		return fine;
+	}
+
+	public void setFine(Date fine) {
+		this.fine = fine;
+	}
+
+	public pizzeria getElencoPizze() {
+		return elencoPizze;
+	}
+
+	public void setElencoPizze(pizzeria elencoPizze) {
+		this.elencoPizze = elencoPizze;
+	}
 
 
-
-    public pizzeria getElencoPizze() {
-        return elencoPizze;
-    }
-
-    public void setElencoPizze(pizzeria pizza) {
-        this.elencoPizze = pizza;
-    }
 }
 
 

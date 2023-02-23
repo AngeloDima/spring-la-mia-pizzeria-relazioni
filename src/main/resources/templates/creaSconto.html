@@ -7,9 +7,22 @@
 <body>
 
 	<form id="pizza-form" th:object="${sconto}" th:action="@{/sconto/create}" method="post">
+	
+	
         <label for="Offerta">offerta</label>
-        
         <input type="text" id="Offerta" th:field="*{Offerta}" >
+        
+        
+        <label for="inizio">inizio</label>
+        <input type="date" id="inizio" th:field="*{inizio}" >
+        
+        
+        <label for="fine">fine</label>
+        <input type="date" id="fine" th:field="*{fine}" >
+        
+        
+          
+        
         <input type="hidden"  th:field="*{elencoPizze}" >
         <button type="submit">Submit</button>
     </form>
