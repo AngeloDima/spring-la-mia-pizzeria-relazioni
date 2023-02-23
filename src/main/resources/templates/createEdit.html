@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Modifica sconto</title>
+</head>
+<body>
+
+
+
+
+	<form th:object="${editSconto}" th:action="@{/edit/{id}(id=${editSconto.id})}" method="post">
+		<label for="Offerta">Offerta</label>
+		<input type="text" id="offerta" th:field="*{Offerta}">
+		
+		<label for="inizio">Data di inizio</label>
+		<input type="date" id="inizio" th:field="*{inizio}">
+		
+		<label for="fine">Data di fine</label>
+		<input type="date" id="fine" th:field="*{fine}">
+		
+		
+		
+		
+		
+		<input type="hidden" th:field="*{editSconto}">
+		<button type="submit">Salva</button>
+	</form>
+	
+	
+	
+	
+	
+</body>
+</html>
