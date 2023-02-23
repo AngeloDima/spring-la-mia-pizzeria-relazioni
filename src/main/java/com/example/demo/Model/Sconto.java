@@ -20,12 +20,13 @@ public class Sconto {
     private String Offerta;
    
     private Date inizio;
+    
     private Date fine;
 
 	//------------------------------------------------------------
     @ManyToOne
     
-    private pizzeria elencoPizze;
+    private pizzeria pizza;
     //------------------------------------------------------------
 
 	public Integer getId() {
@@ -60,12 +61,12 @@ public class Sconto {
 		this.fine = fine;
 	}
 
-	public pizzeria getElencoPizze() {
-		return elencoPizze;
+	public pizzeria getPizza() {
+		return pizza;
 	}
 
-	public void setElencoPizze(pizzeria elencoPizze) {
-		this.elencoPizze = elencoPizze;
+	public void setPizza(pizzeria pizza) {
+		this.pizza = pizza;
 	}
 
 

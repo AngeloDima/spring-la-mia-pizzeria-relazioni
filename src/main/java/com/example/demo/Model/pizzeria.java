@@ -45,7 +45,7 @@ public class pizzeria {
     @DecimalMax(value = "999.99", inclusive = true, message = "Il prezzo non può essere inferiore a 999.99")
     private Double prezzo;
 
-    @OneToMany(mappedBy = "elencoPizze")
+    @OneToMany(mappedBy = "pizza")
     private List<Sconto> sconto;
     //------------------------------------------------------------
 

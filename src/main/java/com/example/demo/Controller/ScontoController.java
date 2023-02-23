@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,20 +35,23 @@ public class ScontoController {
 	
 	
 	@GetMapping("/create")
-	public String create(@RequestParam(name="elencoPizze")Integer pizzaId, Model model) {
-		Sconto sconto = new Sconto();
-		sconto.setElencoPizze(repositoryPizza.getReferenceById(pizzaId));
-		model.addAttribute("sconto", sconto);
-		return "creaSconto";
+	public String create(@RequestParam(name="pizza") Integer pizzaId, Model model) {
+	    Sconto newSconto = new Sconto();
+	    newSconto.setPizza(repositoryPizza.getReferenceById(pizzaId));
+	    model.addAttribute("newSconto", newSconto);
+	    return "creaSconto";
 	}
 
-	
-	
-	@PostMapping("/create")
-	public String paggCreate(@ModelAttribute("sconto") Sconto formSconto, BindingResult bindingResult, Model model) {	
-		repository.save(formSconto);
-		return "redirect:/";
+	@PostMapping("/create/{pizza}")
+	public String paggCreate(@Valid @ModelAttribute("newSconto") Sconto formSconto, BindingResult bindingResult, Model model) {    
+	    if (bindingResult.hasErrors()) {
+	        return "creaSconto";
+	    } else {
+	        repository.save(formSconto);
+	        return "redirect:/";
+	    }
 	}
+
 	
 	
 	//-------------------edit
