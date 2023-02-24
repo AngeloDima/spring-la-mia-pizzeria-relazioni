@@ -57,7 +57,7 @@ public class ScontoController {
 	//-------------------edit
 	
 	
-	@GetMapping("/edit/{id}")
+	@GetMapping("/ModificaEdit/{id}")
 	public String storeEdit(@PathVariable("id") Integer id, Model model) {
 	    Sconto sconto = repository.getReferenceById(id);
 	    model.addAttribute("editSconto", sconto);
@@ -65,7 +65,7 @@ public class ScontoController {
 	}
 
 
-	@PostMapping("/edit/{id}")
+	@PostMapping("/ModificaEdit/{id}")
 	public String update(
 			@ModelAttribute ("editSconto") Sconto formSconto,BindingResult bindingResult, Model model) {
 
