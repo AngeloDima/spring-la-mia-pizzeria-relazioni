@@ -13,6 +13,26 @@
 		<h2 th:text="${dettPizza.prezzo}"></h2>
 	</div>
 	
+	<h1>Ingredienti</h1>
+	
+	
+	
+	
+	
+	
+
+		<ul>
+		
+			<li th:each="Ingrediente : ${dettPizza.ingredienti}" th:text="${Ingrediente.nome}">
+			
+		</ul>
+			
+	
+	
+	
+	
+	
+	
 	
 	<a th:href="@{/sconto/create(pizza=${dettPizza.id})}">Crea sconto</a>
 

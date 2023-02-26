@@ -46,9 +46,18 @@
 			</ul>
   		</div>
         
-        
+  
         <button type="submit">Submit</button>
     </form>
+    
+    <div>
+		  <h2>Ingredienti</h2>
+		  <div th:each="Ingredienti : ${editIngredienti}">
+		    <input type="checkbox" th:field="${Ingrediente.id}">
+		    <label th:text="${Ingrediente.nome}" th:for="${#ids.prev('Ingrediente.id')}"></label>
+		    <h4 th:text="${Ingrediente.nome}"></h4>
+		  </div>
+		</div>
 
 </body>
 </html>

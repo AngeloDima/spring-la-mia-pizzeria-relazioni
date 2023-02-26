@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.Model.Ingredienti;
 import com.example.demo.Model.pizzeria;
+import com.example.demo.Repository.ingredientiRepository;
 import com.example.demo.Repository.pizzeriaRepository;
 
 import jakarta.validation.Valid;
@@ -24,6 +26,11 @@ public class pizzeriaController {
 
     @Autowired
     pizzeriaRepository repository;
+    
+    
+    
+    @Autowired
+    ingredientiRepository repositoryIngredienti;
 
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String keyword,
@@ -72,24 +79,28 @@ public class pizzeriaController {
     }
 
 
-	
-    
 
-    
-    
     //edit
     
     
     @GetMapping("/edit/{id}") 
-    	public String storeEdit(@PathVariable("id") Integer id, Model model) {
-    		
-    		pizzeria editPizza;
-    		editPizza=repository.getReferenceById(id);
-    		model.addAttribute("editPizza", editPizza);
-    	
-    		return "edit";
-    	}
-    
+    public String storeEdit(@PathVariable("id") Integer id, Model model) {
+        pizzeria editPizza;
+        editPizza = repository.getReferenceById(id);
+        
+        
+        List<Ingredienti> editIngredienti = repositoryIngredienti.findAll();
+        
+        
+        
+        
+        model.addAttribute("editIngredienti", editIngredienti);
+        model.addAttribute("editPizza", editPizza);
+        return "edit";
+        
+        
+    }
+
     
     @PostMapping("/edit/{id}")
     public String update(
@@ -103,6 +114,7 @@ public class pizzeriaController {
     }
     
     
+
     //delete
     
 
